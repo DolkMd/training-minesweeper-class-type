@@ -1,6 +1,6 @@
 package domain;
 
-enum PanelStatus {
+public enum PanelStatus {
     Opened,
     None,
     Bomb,

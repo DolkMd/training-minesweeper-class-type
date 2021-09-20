@@ -1,13 +1,18 @@
 package usecase;
 
+import domain.Board;
 import domain.Crawler;
+import usecase.interfaces.SearchUseCase;
 
 import java.util.List;
 
-public final class UseCase {
-    private final Crawler crawler = new Crawler();
-
+public final class UseCase implements SearchUseCase {
     public List<Crawler.Counter> getReversiblePoints(final int x, final int y) {
-        return this.crawler.eatPanels(x, y);
+        return  new Crawler().eatPanels(x, y);
+    }
+
+    public void initBoard(int bombNumber) {
+        Board.init();
+        Board.setRandBombs(bombNumber);
     }
 }

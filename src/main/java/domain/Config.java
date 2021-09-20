@@ -1,6 +1,6 @@
 package domain;
 
-class Config {
-    final static int TROUT = 20;
-    final static int HW = 800;
+public class Config {
+    public final static int TROUT = 50;
+    public final static int HW = 800;
 }

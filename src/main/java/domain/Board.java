@@ -1,8 +1,15 @@
 package domain;
 
+import domain.error.OutSideException;
+
+import java.util.Random;
+
 public final class Board {
+    static { init(); }
+
     private static PanelStatus[][] map;
-    static {
+
+    public static void init() {
         Board.map = new PanelStatus[Config.TROUT][Config.TROUT];
         for (int i = 0; i < Config.TROUT; i++) {
             for (int j = 0; j < Config.TROUT; j++) {
@@ -21,15 +28,20 @@ public final class Board {
         return true;
     }
 
+    public static void setRandBombs(int n) {
+        final Random rand = new Random();
+        for (int i = 0; i < n; i++) {
+            Board.setBom(rand.nextInt(Config.TROUT), rand.nextInt(Config.TROUT));
+        }
+    }
+
     public static PanelStatus getValue(final int x, final int y) {
-        if (!Board.isInside(x, y)) throw new RuntimeException("Outside domain.Board x:" + x + " y:" + y);
+        if (!Board.isInside(x, y)) throw new OutSideException(x, y);
         return map[x][y];
     }
 
-    public static PanelStatus open(final int x, final int y) {
-        if (!Board.isInside(x, y)) throw new RuntimeException("Outside domain.Board x:" + x + " y:" + y);
-        final PanelStatus result = Board.map[x][y];
+    public static void open(final int x, final int y) {
+        if (!Board.isInside(x, y)) throw new OutSideException(x, y);
         Board.map[x][y] = PanelStatus.Opened;
-        return result;
     }
 }
