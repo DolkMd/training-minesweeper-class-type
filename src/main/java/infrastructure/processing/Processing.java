@@ -1,13 +1,13 @@
-package infrastructure;
+package infrastructure.processing;
 
 import domain.Crawler;
 import domain.PanelStatus;
 import usecase.UseCase;
+import usecase.interfaces.SearchUseCase;
 import static domain.Config.*;
 
 import java.util.List;
 import processing.core.PApplet;
-import usecase.interfaces.SearchUseCase;
 
 public class Processing extends PApplet {
     private final SearchUseCase useCase = new UseCase();

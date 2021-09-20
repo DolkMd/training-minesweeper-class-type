@@ -10,6 +10,7 @@ public final class Board {
     private static PanelStatus[][] map;
 
     public static void init() {
+
         Board.map = new PanelStatus[Config.TROUT][Config.TROUT];
         for (int i = 0; i < Config.TROUT; i++) {
             for (int j = 0; j < Config.TROUT; j++) {
