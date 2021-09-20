@@ -11,7 +11,7 @@ public final class UseCase implements SearchUseCase {
         return  new Crawler().eatPanels(x, y);
     }
 
-    public void initBoard(int bombNumber) {
+    public void initBoard(final int bombNumber) {
         Board.init();
         Board.setRandBombs(bombNumber);
     }
